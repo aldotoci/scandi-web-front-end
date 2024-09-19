@@ -53,11 +53,13 @@ class Product extends Component {
         </div>
 
         <div className={Styles.AddToCartIcon}>
-          <AddToCartIcon
-            data-testid="cart-btn"
-            onClick={this.onCartClick}
-            style={this.inStock ? {} : { display: 'none' }}
-          />
+            <button data-testid="add-to-cart"
+                onClick={this.onCartClick}
+                style={this.inStock ? {} : { cursor: 'not-allowed' }}
+                disabled={!this.inStock}
+            >
+                <AddToCartIcon />
+            </button>
         </div>
         <div className={Styles.infoContainer}>
           <div className={Styles.name}>{product.name}</div>

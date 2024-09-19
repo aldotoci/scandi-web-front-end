@@ -1,0 +1,25 @@
+.container{
+    padding: 26px 16px;
+    border-bottom-width: 2px;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.link{
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.link:hover{
+    color: var(--active-color);
+}
+
+.linkActive{
+    color: var(--active-color);
+}
+
+.containerActive{
+    border-color: var(--active-color);
+    border-bottom-style: solid;
+}

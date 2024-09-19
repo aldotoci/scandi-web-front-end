@@ -1,0 +1,14 @@
+.wrapper{
+    width: 100%;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.categoriesContainer{
+    display: flex;
+}
+

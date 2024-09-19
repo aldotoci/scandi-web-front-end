@@ -1,0 +1,59 @@
+.container {
+    display: flex;
+}
+
+.ColumnImagesContainer {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    height: 478px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.thumbnail {
+    width: 79px;
+    height: 80px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.caroselContainer {
+    position: relative;
+    width: 575px;
+    height: 478px;
+}
+
+.caroselImage {
+    width: 100%;
+    height: 100%;
+}
+
+.caroselImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rightArrow,
+.leftArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background: #000000BA;
+    height: 31.7px;
+    width: 31.7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rightArrow {
+    right: 10px;
+}
+
+.leftArrow {
+    left: 10px;
+}

@@ -7,6 +7,7 @@ class AddToCartButton extends Component {
 
     return (
       <button disabled={disabled}
+        data-testid="add-to-cart"
         style={{ cursor: disabled ? "not-allowed" : "pointer" }}
       className={Styles.button} onClick={onClick}>
         <div className={Styles.buttonText}>

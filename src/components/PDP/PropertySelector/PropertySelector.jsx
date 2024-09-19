@@ -34,7 +34,7 @@ class PropertySelector extends Component {
                 key={item.id}
                 className={`${Styles.item} ${selectedAttributes[attribute.id] === item.id ? Styles.selected : ''}`}
                 onClick={() => this.props.handleSelect(attribute.id, item.id)}
-                data-testid={`product-attribute-${attribute.id.toLowerCase()}-${attribute.value}`}
+                data-testid={`product-attribute-${attribute.id.toLowerCase()}-${item.value}`}
             >
                 {item.value}
             </div>

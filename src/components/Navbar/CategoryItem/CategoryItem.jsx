@@ -19,7 +19,7 @@ class CategoryItem extends Component {
 
         return (
             <div
-                // onClick={this.props.onClick}
+                onClick={this.props.onClick}
                 className={Styles.container + ' ' + (active ? Styles.containerActive : '')}
                 
                 >

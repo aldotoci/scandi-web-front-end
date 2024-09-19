@@ -56,7 +56,7 @@ class Home extends Component {
 
     setActiveCategory = (category) => {
         this.setState({
-            activeCategory: category,
+            // activeCategory: category,
             selectedProduct: null
         });
     }

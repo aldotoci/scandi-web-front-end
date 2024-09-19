@@ -12,7 +12,6 @@ class Home extends Component {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
         this.state = {
-            // Add state properties here
             categories: [],
             activeCategory: '',
             products: [],
@@ -20,33 +19,23 @@ class Home extends Component {
             selectedProduct: null
         };
 
-        /**
-         * Populate state with categories and products
-         */
         ClientService.getCategories().then((response) => {
-            const activeCategory = response[0].name;
             const categories = response.map((category) => category.name);
+            const activeCategory = this.props.params.category || categories[0];
             this.setState({ categories, activeCategory });
-            // this.updateProducts(activeCategory);      
-        })
-
+        });
     }
 
-    /**
-     * 
-     * @param {string} category
-     * Update the products based on the category 
-     */
     updateProducts = (category) => {
         ClientService.getProductsForGrid(category).then((products) => {
             this.setState({
                 products
             });
-        })
+        });
     }
 
     componentDidMount() {
-        console.log(console.log(this.state));
+        console.log(this.state);
     }
 
     setActiveCategory = (category) => {
@@ -57,18 +46,12 @@ class Home extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        /*
-          Update the products when the active category changes
-        */
         if (prevState.activeCategory !== this.state.activeCategory) {
             this.updateProducts(this.state.activeCategory);
         }
 
         const cart = this.state.cart;
-
-        // Store cart in local storage
         localStorage.setItem('cart', JSON.stringify(cart));
-
     }
 
     onSelectProduct = async (selectedProduct) => {
@@ -83,7 +66,6 @@ class Home extends Component {
         });
     }
 
-    //Remove product from cart only once
     onRemoveFromCart = (productId) => {
         const cart = this.state.cart;
         const index = cart.findIndex((product) => product.id === productId);
@@ -129,6 +111,5 @@ class Home extends Component {
         );
     }
 }
-
 
 export default Home;

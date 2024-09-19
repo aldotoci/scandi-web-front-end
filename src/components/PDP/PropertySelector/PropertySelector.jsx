@@ -22,6 +22,7 @@ class PropertySelector extends Component {
                     style={{
                         backgroundColor: item.value,
                     }}
+                    data-testid={`product-attribute-${attribute.id.toLowerCase()}-${item.value}`}
                 >
                     </div>
                 </div>
@@ -33,7 +34,7 @@ class PropertySelector extends Component {
                 key={item.id}
                 className={`${Styles.item} ${selectedAttributes[attribute.id] === item.id ? Styles.selected : ''}`}
                 onClick={() => this.props.handleSelect(attribute.id, item.id)}
-                data-testid={`product-attribute-${attribute.value}`}
+                data-testid={`product-attribute-${attribute.id.toLowerCase()}-${attribute.value}`}
             >
                 {item.value}
             </div>
@@ -46,9 +47,10 @@ class PropertySelector extends Component {
         return (
             <div className={Styles.container}>
                 {attributes.map(attribute => (
-                    <div key={attribute.id} className={Styles.attribute}>
+                    <div 
+                    key={attribute.id} className={Styles.attribute}>
                         <div className={Styles.attributeName}>{attribute.name}:</div>
-                        <div className={Styles.items}>
+                        <div data-testid={`product-attribute-${attribute.id.toLowerCase()}`} className={Styles.items}>
                             {attribute.items.map(item => this.renderItem(attribute, item))}
                         </div>
                     </div>

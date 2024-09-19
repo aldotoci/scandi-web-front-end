@@ -42,7 +42,7 @@ class Navbar extends Component {
           <div className={Styles.spacer}></div>
 
           <div data-testid="cart-btn" style={{ cursor: 'pointer' }} onClick={toggleCartDropdown}>
-            <CartIconWrapper cartLength={cart.length} />
+            <CartIconWrapper showCartDropdown={showCartDropdown} cartLength={cart.length} />
           </div>
         </div>
         {showCartDropdown && <CartDropdown onPlaceHolder={onPlaceHolder} onRemoveFromCart={onRemoveFromCart} onAddToCart={onAddToCart} cart={cart} onClose={closeCartDropdown} />}

@@ -58,8 +58,11 @@ class CartDropdown extends React.Component {
                         <div className={Styles.title}>
                             My Bag
                         </div>
+                        <div style={{marginRight: 5}} className={Styles.itemCounter}>
+                            {","} 
+                        </div>
                         <div className={Styles.itemCounter}>
-                            , {cart.length} {cart.length === 1 ? 'item' : 'items'}
+                            {`${cart.length} ${cart.length === 1 ? 'item' : 'items'}`}
                         </div>
                     </div>
                     <div className={Styles.cartContainer} >

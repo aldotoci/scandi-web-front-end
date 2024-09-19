@@ -43,7 +43,7 @@ class Navbar extends Component {
           </div>
           <div className={Styles.spacer}></div>
 
-          <div data-testid='cart-btn' style={{ cursor: 'pointer' }}>
+          <div style={{ cursor: 'pointer' }}>
             <Logo />
           </div>
 

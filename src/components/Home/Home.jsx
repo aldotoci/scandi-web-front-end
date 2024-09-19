@@ -16,7 +16,9 @@ class Home extends Component {
             activeCategory: '',
             products: [],
             cart,
-            selectedProduct: null
+            selectedProduct: null,
+              showCartDropdown: false,
+
         };
 
         ClientService.getCategories().then((response) => {
@@ -25,6 +27,12 @@ class Home extends Component {
             this.setState({ categories, activeCategory });
         });
     }
+
+    toggleCartDropdown = () => {
+        this.setState((prevState) => ({
+          showCartDropdown: !prevState.showCartDropdown,
+        }));
+      };
 
     updateProducts = (category) => {
         ClientService.getProductsForGrid(category).then((products) => {
@@ -71,6 +79,7 @@ class Home extends Component {
         this.setState({
             cart: [...this.state.cart, product]
         });
+        this.toggleCartDropdown();
     }
 
     onRemoveFromCart = (productId) => {
@@ -88,11 +97,17 @@ class Home extends Component {
             cart: []
         });
     }
+    closeCartDropdown = () => {
+        this.setState({ showCartDropdown: false });
+      };
 
     render() {
         return (
             <div className="App">
                 <Navbar
+                    toggleCartDropdown={this.toggleCartDropdown}
+                    showCartDropdown={this.state.showCartDropdown}
+                    closeCartDropdown={this.closeCartDropdown}
                     categories={this.state.categories}
                     activeCategory={this.state.activeCategory}
                     setActiveCategory={this.setActiveCategory}

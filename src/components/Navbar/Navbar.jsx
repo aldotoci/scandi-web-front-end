@@ -13,19 +13,10 @@ class Navbar extends Component {
     };
   }
 
-  toggleCartDropdown = () => {
-    this.setState((prevState) => ({
-      showCartDropdown: !prevState.showCartDropdown,
-    }));
-  };
-
-  closeCartDropdown = () => {
-    this.setState({ showCartDropdown: false });
-  };
+  
 
   render() {
-    const { showCartDropdown } = this.state;
-    const { onRemoveFromCart, onAddToCart, onPlaceHolder } = this.props;
+    const { showCartDropdown, onRemoveFromCart, onAddToCart, onPlaceHolder, toggleCartDropdown, closeCartDropdown } = this.props;
     const { cart, categories, activeCategory, setActiveCategory } = this.props;
 
     return (
@@ -50,12 +41,11 @@ class Navbar extends Component {
           <div className={Styles.spacer}></div>
           <div className={Styles.spacer}></div>
 
-          <div 
-          data-testid="cart-btn" style={{ cursor: 'pointer' }} onClick={this.toggleCartDropdown}>
+          <div data-testid="cart-btn" style={{ cursor: 'pointer' }} onClick={toggleCartDropdown}>
             <CartIconWrapper cartLength={cart.length} />
           </div>
         </div>
-        {showCartDropdown && <CartDropdown onPlaceHolder={onPlaceHolder} onRemoveFromCart={onRemoveFromCart} onAddToCart={onAddToCart} cart={cart} onClose={this.closeCartDropdown} />}
+        {showCartDropdown && <CartDropdown onPlaceHolder={onPlaceHolder} onRemoveFromCart={onRemoveFromCart} onAddToCart={onAddToCart} cart={cart} onClose={closeCartDropdown} />}
       </nav>
     );
   }

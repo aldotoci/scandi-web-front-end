@@ -31,7 +31,7 @@ class Product extends Component {
 
         return (
             <div 
-                data-testid={`product-${product.name}`}
+                data-testid={`product-${product.id}`}
                 className={Styles.container} 
                 onClick={() => onSelectProduct(product)}
                 >

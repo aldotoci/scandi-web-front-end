@@ -2,7 +2,8 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
 class ClientService {
     static client = new ApolloClient({
-        uri: 'http://localhost:5555/graphql', // GraphQL endpoint
+        // uri: 'http://localhost:5555/graphql', // GraphQL endpoint
+        uri: 'https://llama-meet-kid.ngrok-free.app/graphql', // GraphQL endpoint
         // uri: 'http://localhost:8080/graphql', // GraphQL endpoint
         cache: new InMemoryCache(),
     });

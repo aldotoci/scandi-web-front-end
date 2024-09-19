@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Styles from './CategoryItem.module.css';
+import { Link } from 'react-router-dom';
 
 
 class CategoryItem extends Component {
@@ -14,7 +15,7 @@ class CategoryItem extends Component {
 
 
     render() {
-        const {active} = this.props;
+        const {active, category} = this.props;
 
         return (
             <div
@@ -23,9 +24,9 @@ class CategoryItem extends Component {
                 className={Styles.container + ' ' + (active ? Styles.containerActive : '')}
                 
                 >
-                <a className={`${Styles.link} ${this.props.active ? Styles.linkActive : ''}` }>
-                    {this.props.category}
-                </a>
+                <Link to={`/${category}`} className={`${Styles.link} ${this.props.active ? Styles.linkActive : ''}` }>
+                    {category}
+                </Link>
         
             </div>
         );

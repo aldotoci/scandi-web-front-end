@@ -5,7 +5,7 @@ import Styles from './CartIconWrapper.module.css';
 
 const CartIconWrapper = ({ cartLength }) => {
   return (
-    <div className={Styles.cartIconWrapper}>
+    <div data-testid="cart-overlay" className={Styles.cartIconWrapper}>
       <CartIcon />
       {cartLength >= 1 && (
         <div className={Styles.cartCount}>

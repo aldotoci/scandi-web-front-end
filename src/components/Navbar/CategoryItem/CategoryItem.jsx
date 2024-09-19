@@ -19,12 +19,11 @@ class CategoryItem extends Component {
 
         return (
             <div
-                data-testid={!active ? 'category-link' : 'active-category-link'}
                 onClick={this.props.onClick}
                 className={Styles.container + ' ' + (active ? Styles.containerActive : '')}
                 
                 >
-                <Link to={`/${category}`} className={`${Styles.link} ${this.props.active ? Styles.linkActive : ''}` }>
+                <Link data-testid={!active ? 'category-link' : 'active-category-link'} to={`/${category}`} className={`${Styles.link} ${this.props.active ? Styles.linkActive : ''}` }>
                     {category}
                 </Link>
         

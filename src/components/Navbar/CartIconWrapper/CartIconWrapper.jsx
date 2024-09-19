@@ -5,13 +5,11 @@ import Styles from './CartIconWrapper.module.css';
 
 const CartIconWrapper = ({ cartLength }) => {
   return (
-    <div data-testid="cart-overlay" className={Styles.cartIconWrapper}>
+    <div className={Styles.cartIconWrapper}>
       <CartIcon />
-      {cartLength >= 1 && (
-        <div className={Styles.cartCount}>
-          {cartLength}
-        </div>
-      )}
+      <div style={cartLength >= 1 ? {} : {display: 'none'}} data-testid="cart-overlay" className={Styles.cartCount}>
+        {cartLength}
+      </div>
     </div>
   );
 };

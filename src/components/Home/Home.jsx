@@ -35,7 +35,23 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        console.log(this.state);
+        this.updateProducts(this.state.activeCategory);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.params.category !== this.props.params.category) {
+            const newCategory = this.props.params.category || this.state.categories[0];
+            this.setState({ activeCategory: newCategory }, () => {
+                this.updateProducts(newCategory);
+            });
+        }
+
+        if (prevState.activeCategory !== this.state.activeCategory) {
+            this.updateProducts(this.state.activeCategory);
+        }
+
+        const cart = this.state.cart;
+        localStorage.setItem('cart', JSON.stringify(cart));
     }
 
     setActiveCategory = (category) => {
@@ -43,15 +59,6 @@ class Home extends Component {
             activeCategory: category,
             selectedProduct: null
         });
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.activeCategory !== this.state.activeCategory) {
-            this.updateProducts(this.state.activeCategory);
-        }
-
-        const cart = this.state.cart;
-        localStorage.setItem('cart', JSON.stringify(cart));
     }
 
     onSelectProduct = async (selectedProduct) => {

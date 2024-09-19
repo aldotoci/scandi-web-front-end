@@ -48,9 +48,9 @@ class Product extends Component {
                 </div>
                 
                 <div className={Styles.AddToCartIcon}>
-                    {this.inStock && 
-                        <AddToCartIcon onClick={this.onCartClick} />
-                    }
+                    <AddToCartIcon data-testid="cart-btn" onClick={this.onCartClick} 
+                        style={this.inStock ? {} : {display: 'none'}}
+                    />
                 </div>
                 <div className={Styles.infoContainer} >
                     <div className={Styles.name}>

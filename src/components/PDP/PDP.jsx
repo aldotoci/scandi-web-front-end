@@ -47,6 +47,9 @@ class PDP extends Component {
     render() {
         const { product } = this.props;
 
+        const selecteAllAttributes = this.hasTheUserSelectedAllAttributes();
+
+        console.log('selecteAllAttributes', selecteAllAttributes)
 
         return (
             <div className={Styles.container}>
@@ -68,7 +71,7 @@ class PDP extends Component {
                             {product.prices[0].currency.symbol}{product.prices[0].amount}
                         </div>
                     </div>
-                    <AddToCartButton disabled={!product.inStock}  onClick={this.handleAddToCart} />
+                    <AddToCartButton disabled={!selecteAllAttributes ? true : !product.inStock}  onClick={this.handleAddToCart} />
                     <div className={Styles.description} data-testid='product-description'>
                         {parse(product.description)}
                     </div>

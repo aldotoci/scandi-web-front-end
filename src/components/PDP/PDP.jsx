@@ -10,10 +10,11 @@ class PDP extends Component {
         super(props);
         this.state = {
             // Add state properties here if needed
-            selectedAttributes: this.props.product.attributes.reduce((acc, attribute) => {
-                acc[attribute.id] = attribute.items[0].id;
-                return acc;
-            }, {}),
+            // selectedAttributes: this.props.product.attributes.reduce((acc, attribute) => {
+            //     acc[attribute.id] = attribute.items[0].id;
+            //     return acc;
+            // }, {}),
+            selectedAttributes: {},
         };
     }
 
@@ -31,6 +32,15 @@ class PDP extends Component {
         this.props.onAddToCart({
             ...this.props.product,
             selectedAttributes: this.state.selectedAttributes
+        });
+    }
+
+    hasTheUserSelectedAllAttributes = () => {
+        const { product } = this.props;
+        const selectedAttributes = this.state.selectedAttributes;
+
+        return product.attributes.every(attribute => {
+            return selectedAttributes[attribute.id] !== undefined;
         });
     }
 
@@ -58,7 +68,7 @@ class PDP extends Component {
                             {product.prices[0].currency.symbol}{product.prices[0].amount}
                         </div>
                     </div>
-                    <AddToCartButton disabled={!product.inStock || product.id === 'apple-iphone-12-pro'}  onClick={this.handleAddToCart} />
+                    <AddToCartButton disabled={!product.inStock}  onClick={this.handleAddToCart} />
                     <div className={Styles.description} data-testid='product-description'>
                         {parse(product.description)}
                     </div>

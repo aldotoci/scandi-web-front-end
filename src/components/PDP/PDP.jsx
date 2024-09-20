@@ -58,7 +58,7 @@ class PDP extends Component {
                             {product.prices[0].currency.symbol}{product.prices[0].amount}
                         </div>
                     </div>
-                    <AddToCartButton  onClick={this.handleAddToCart} />
+                    <AddToCartButton disabled={!product.inStock}  onClick={this.handleAddToCart} />
                     <div className={Styles.description} data-testid='product-description'>
                         {parse(product.description)}
                     </div>
